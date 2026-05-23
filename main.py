@@ -76,7 +76,9 @@ def fetch_wordsearch_puzzle(grid_size: int, num_words: int) -> dict:
         timeout=5,
     )
     response.raise_for_status()
-    return response.json()
+    res = response.json()
+    res["words"] = res["words"][:num_words]
+    return res
 
 
 def fetch_sudoku_puzzle(difficulty: str) -> dict:
