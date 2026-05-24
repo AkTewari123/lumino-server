@@ -102,7 +102,7 @@ def pick_game(credit_score: int) -> dict:
         game = random.choice(["wordle", "word_search"])
     else:
         game = random.choice(["wordle", "word_search", "meditation"])
-
+    print(f"Picked game: {game} for credit score: {credit_score}")
     return {"game": game, "config": build_config(game, credit_score)}
 
 
@@ -115,8 +115,8 @@ def build_config(game: str, credit_score: int) -> dict:
         else:
             word_length = 4
         random_word = requests.get(
-            f"https://random-word-api.herokuapp.com/word?length={word_length}"
-        ).json()[0]
+            f"https://random-words-api.kushcreates.com/api?language=en&words=1&length={word_length}"
+        ).json()
         print(random_word)
         return {
             "word": random_word,  # In production, fetch a random word of the correct length from your DB
