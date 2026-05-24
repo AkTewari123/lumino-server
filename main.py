@@ -116,7 +116,7 @@ def build_config(game: str, credit_score: int) -> dict:
             word_length = 4
         random_word = requests.get(
             f"https://random-words-api.kushcreates.com/api?language=en&words=1&length={word_length}"
-        ).json()
+        ).json()[0]["word"]
         print(random_word)
         return {
             "word": random_word,  # In production, fetch a random word of the correct length from your DB
