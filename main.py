@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from supabase import create_client, Client
 import uvicorn
+import secrets
 
 load_dotenv()
 
@@ -151,7 +152,12 @@ def build_config(game: str, credit_score: int) -> dict:
 
 
 def sign_payload(data: dict) -> str:
-    body = json.dumps(data, separators=(",", ":"))
+    payload = {
+        **data,
+        "ts": int(time.time()),
+        "nonce": secrets.token_hex(8),
+    }
+    body = json.dumps(payload, separators=(",", ":"), sort_keys=True)
     body_b64 = base64.urlsafe_b64encode(body.encode()).decode()
     sig = hmac.new(
         PAYLOAD_SECRET.encode(),
