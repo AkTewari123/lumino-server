@@ -1,6 +1,7 @@
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.13.0
+autopep8==2.3.2
 cachetools==6.2.6
 certifi==2026.5.20
 cffi==2.0.0
@@ -19,14 +20,17 @@ httpcore==1.0.9
 httpx==0.28.1
 hyperframe==6.1.0
 idna==3.16
+iniconfig==2.3.0
 markdown-it-py==4.2.0
 marshmallow==4.3.0
 mdurl==0.1.2
 mmh3==5.2.1
 multidict==6.7.1
 packaging==26.2
+pluggy==1.6.0
 postgrest==2.30.0
 propcache==0.5.2
+pycodestyle==2.14.0
 pycparser==3.0
 pydantic==2.13.4
 pydantic_core==2.46.4
@@ -35,8 +39,10 @@ pyiceberg==0.11.1
 PyJWT==2.13.0
 pyparsing==3.3.2
 pyroaring==1.1.0
+pytest==8.4.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.2
+PyYAML==6.0.3
 realtime==2.30.0
 requests==2.34.2
 rich==14.3.4
@@ -54,5 +60,6 @@ typing_extensions==4.15.0
 urllib3==2.7.0
 uvicorn==0.47.0
 websockets==15.0.1
+wonderwords==3.0.1
 yarl==1.24.2
 zstandard==0.25.0

@@ -1,3 +1,4 @@
+from wonderwords import RandomWord
 import os
 import random
 import hmac
@@ -116,9 +117,8 @@ def build_config(game: str, credit_score: int) -> dict:
             word_length = 5
         else:
             word_length = 4
-        random_word = requests.get(
-            f"https://random-words-api.kushcreates.com/api?language=en&words=1&length={word_length}"
-        ).json()[0]["word"]
+        r = RandomWord()
+        random_word = r.word(word_min_length=word_length, word_max_length=word_length)
         print(random_word)
         return {
             "word": random_word,  # In production, fetch a random word of the correct length from your DB
