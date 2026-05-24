@@ -3,6 +3,7 @@ import random
 import hmac
 import hashlib
 import json
+import math
 import time
 import base64
 
@@ -171,10 +172,12 @@ def get_game(req: GameRequest):
         raise HTTPException(status_code=500, detail=f"Supabase error: {str(e)}")
 
     result = pick_game(credit_score)
+    max_attempts = math.ceil(math.floor(credit_score / 100) / 2)
     payload_data = {
         "game": result["game"],
         "config": result["config"],
         "credit_score": credit_score,
+        "max_attempts": max_attempts,
         "auth_id": req.auth_id,
         "website": req.website,
         "ts": int(time.time()),
